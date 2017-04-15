@@ -1,0 +1,28 @@
+@import './less/reset-styles';
+@import './less/variables';
+@import './components/Loader/loader';
+@import './components/MainHeader/main-header';
+@import './components/SpaList/spa-list';
+@import './components/DetailInfo/detail-info';
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: @main-background-color;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: normal;
+  font-size: 1.4rem;
+  box-sizing: border-box;
+}
+
+.content {
+  width: 100%;
+  position: relative;
+  height: auto;
+  top: @header-height;
+  background-color: @main-background-color;
+}
+

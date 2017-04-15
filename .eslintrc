@@ -1,0 +1,20 @@
+{
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+  },
+
+  "rules": {
+    "func-names": ["error", "never"],
+    "padded-blocks": 0,
+    "import/no-mutable-exports": 0,
+    "comma-dangle": ["error", {
+      "arrays": "always-multiline",
+      "objects": "always-multiline",
+      "imports": "always-multiline",
+      "exports": "always-multiline",
+      "functions": "never"
+    }],
+    "react/jsx-filename-extension": 0,
+  }
+}
