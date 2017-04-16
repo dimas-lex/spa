@@ -1,22 +1,61 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import ImmutablePropTypes from 'react-immutable-proptypes';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-const SpaList = (props) => {
-  const count = props.count;
-  return (
-    <div>
-      <div className="list-banner">
-        <h2>The Best {count} SPA Treatment</h2>
-      </div>
-      <div id="content">
-        <p> SpaList Some text hear </p>
-      </div>
-    </div>
-  );
-};
+import { initApp } from '../../actions/app';
+import constants from '../../Constants';
 
-SpaList.propTypes = {
-  count: PropTypes.number,
+import ListItem from './ListItem';
+
+@connect(
+  state => ({
+    spaList: state.app.get('spaList'),
+  })
+)
+
+class SpaList extends Component {
+  static propTypes = {
+    spaList: ImmutablePropTypes.list,
+  }
+
+  getEmptyList () {
+    return (
+      <div>
+        <h2>
+          Sorry, there are no any available SPA Treatments now. <br/>
+          Please try later...
+        </h2>
+      </div>
+    );
+  }
+
+  renderList(spaList) {
+    if (!spaList || !spaList.size) {
+      return this.getEmptyList();
+    }
+
+    return spaList.entrySeq()
+      .map(
+        ([key, spa]) => (<ListItem key={key} spaItem={spa} />)
+      );
+  }
+
+  render() {
+    const spaList = this.props.spaList;
+    const count = (spaList && spaList.size) || '';
+
+    return (
+      <div>
+        <div className="list-banner">
+          <h2>The {count} Best SPA Treatment</h2>
+        </div>
+        <div id="content">
+          { this.renderList(spaList) }
+        </div>
+      </div>
+    );
+  };
 };
 
 export default SpaList;

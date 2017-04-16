@@ -1,18 +1,21 @@
+@import './list-item';
+
 .list-banner {
   width: 100%;
   position: fixed;
-  height: @banner-header;
+  height: @banner-header-height;
   top: @header-height;
   background-color: @secondary-background-color;
+  box-sizing: border-box;
   color: @secondary-color;
   font-size: 2.2rem;
-  padding: 20px;
+  padding: 25px;
 }
 
 #content {
   width: 100%;
   position: relative;
-  top: 180px;
+  top: @banner-header-height;
   background-color: @main-background-color;
   height: 1500px;
 }
