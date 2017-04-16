@@ -46,14 +46,14 @@ class SpaList extends Component {
     const count = (spaList && spaList.size) || '';
 
     return (
-      <div>
-        <div className="list-banner">
+      <main className="list">
+        <div className="list__banner">
           <h2>The {count} Best SPA Treatment</h2>
         </div>
-        <div id="content">
+        <div className="list__content">
           { this.renderList(spaList) }
         </div>
-      </div>
+      </main>
     );
   };
 };

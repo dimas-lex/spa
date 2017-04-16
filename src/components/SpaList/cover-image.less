@@ -1,0 +1,24 @@
+.cover-image {
+  &-image {
+    display: inline-block;
+    background-color: @shadow-color;
+    width: 100%;
+  }
+
+  &:hover &-desc {
+    display: block;
+  }
+
+  &-desc {
+    display: none;
+    position: relative;
+    width: 100%;
+    padding: 7px;
+    font-size: 1.4rem;
+    color: @main-color-1;
+    bottom: 30px;
+    height: 30px;
+    background: @main-color-9;
+    opacity: 0.8;
+  }
+}

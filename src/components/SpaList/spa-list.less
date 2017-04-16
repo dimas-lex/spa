@@ -1,21 +1,32 @@
 @import './list-item';
+@import './cover-image';
+@import './spa-thumbnails';
+@import './addon-list';
+@import './short-spa-info';
 
-.list-banner {
-  width: 100%;
-  position: fixed;
-  height: @banner-header-height;
-  top: @header-height;
-  background-color: @secondary-background-color;
-  box-sizing: border-box;
-  color: @secondary-color;
-  font-size: 2.2rem;
-  padding: 25px;
-}
 
-#content {
-  width: 100%;
-  position: relative;
-  top: @banner-header-height;
-  background-color: @main-background-color;
-  height: 1500px;
+.list {
+  height: 100%;
+
+  &__banner {
+    width: 100%;
+    position: fixed;
+    height: @banner-header-height;
+    top: @header-height;
+    background-color: @secondary-background-color;
+    box-sizing: border-box;
+    color: @secondary-color;
+    font-size: 2.2rem;
+    padding: 25px;
+  }
+
+  &__content {
+    margin: 0 auto;
+    padding: 0 1.5rem;
+
+    position: relative;
+    top: @banner-header-height;
+    background-color: @main-background-color;
+    height: auto;
+  }
 }
