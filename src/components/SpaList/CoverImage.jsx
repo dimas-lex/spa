@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
 const CoverImage = (props) => {
   const { url, coverDescription } = props;
 

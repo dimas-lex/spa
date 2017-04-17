@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRedirect, browserHistory } from 'react-router';
 
 import store from './store';
 import constants from './Constants';
@@ -19,8 +19,9 @@ ReactDOM.render(
     <Router history={browserHistory}>
 
       <Route path={constants.URL.MAIN} component={App}>
-        <IndexRoute component={SpaList} />
+        <IndexRedirect to={constants.URL.LIST} />
 
+        <Route path={constants.URL.LIST} component={SpaList} />
         <Route path={constants.URL.DETAIL} component={DetailInfo} />
         <Route path={constants.URL.ANY} component={SpaList} />
       </Route>

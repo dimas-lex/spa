@@ -15,9 +15,27 @@ const MainHeader = () => (
       </div>
 
       <nav className="header__nav">
-        <Link className="header__nav__item" to={constants.URL.MAIN}>Home</Link>
-        <Link className="header__nav__item" to={constants.URL.DETAIL}>Something</Link>
-        <Link className="header__nav__item" to={constants.URL.AUTHOR}>About</Link>
+        <Link
+          activeClassName="header__nav__item--active"
+          className="header__nav__item"
+          to={constants.URL.LIST}
+        >
+          Home
+        </Link>
+        <Link
+          activeClassName="header__nav__item--active"
+          className="header__nav__item"
+          to={constants.URL.DETAIL}
+        >
+          Something
+        </Link>
+        <Link
+          activeClassName="header__nav__item--active"
+          className="header__nav__item"
+          to={constants.URL.AUTHOR}
+        >
+          About
+        </Link>
       </nav>
     </div>
   </header>

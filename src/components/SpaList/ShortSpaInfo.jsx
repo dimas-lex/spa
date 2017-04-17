@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import * as currencyFormatter from 'currency-formatter';
 
 import AddonList from './AddonList';
 import constants from '../../Constants';
+import utils from '../../utils';
 
 const ShortSpaInfo = (props) => {
   const { spaItem } = props;
@@ -14,21 +16,26 @@ const ShortSpaInfo = (props) => {
 
   return (
     <div className="short-spa-info" >
-      <h1 className="short-spa-info__title">
-        { spaItem.get('name') }
-      </h1>
+      <Link
+        className="short-spa-info__title"
+        to={utils.getSpaLink(spaItem)}
+      >
+        <h1>{ spaItem.get('name') }</h1>
+      </Link>
       <div className="short-spa-info__caption">
         <p> { caption } </p>
       </div>
       <div className="short-spa-info__addons">
         <AddonList addons={spaItem.get('addons')} />
       </div>
-      <div className="short-spa-info__price">
-        {
-          currencyFormatter.format(
-            spaItem.get('price_default'), constants.DEFAULT_CURRENCY)
-        }
-      </div>
+      <Link to={utils.getSpaLink(spaItem)}>
+        <div className="short-spa-info__price">
+          {
+            currencyFormatter.format(
+              spaItem.get('price_default'), constants.DEFAULT_CURRENCY)
+          }
+        </div>
+      </Link>
     </div>
   );
 };

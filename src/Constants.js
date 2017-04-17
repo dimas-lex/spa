@@ -2,7 +2,8 @@ export default {
   URL: {
     ANY: '*',
     MAIN: '/',
-    DETAIL: '/detail/:id',
+    LIST: '/list',
+    DETAIL: '/detail',
     AUTHOR: 'https://github.com/dimas-lex',
   },
   MAX_PREVIEW_THUMBS: 3,

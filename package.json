@@ -6,7 +6,7 @@
   "license": "ISC",
   "main": "index.jsx",
   "scripts": {
-    "start": "webpack-dashboard -t 'SPA' -- webpack-dev-server --colors --no-info",
+    "start": "npm run api & webpack-dashboard -t 'SPA' -- webpack-dev-server --colors --no-info",
     "build": "rm -rf ./build && NODE_ENV=\"production\" webpack",
     "eslint-break-on-errors": "eslint ./src -f table --ext .js --ext .jsx",
     "eslint": "eslint ./src -f table --ext .js --ext .jsx || true",

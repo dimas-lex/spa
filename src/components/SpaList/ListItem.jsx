@@ -1,6 +1,8 @@
 import React from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
+import { Link } from 'react-router';
 
+import utils from '../../utils';
 import ShortSpaInfo from './ShortSpaInfo';
 import SpaThumbnails from './SpaThumbnails';
 import CoverImage from './CoverImage';
@@ -16,14 +18,24 @@ const ListItem = (props) => {
     <article className="spa-item" >
       <div className="spa-item__wrapper" >
         <div className="spa-item__box spa-item__box__cover">
-          <CoverImage
-            url={imgCover.get('url')}
-            coverDescription={coverDescription}
-          />
+          <Link
+            className="short-spa-info__title"
+            to={utils.getSpaLink(spaItem)}
+          >
+            <CoverImage
+              url={imgCover.get('url')}
+              coverDescription={coverDescription}
+            />
+          </Link>
         </div>
 
         <div className="spa-item__box spa-item__box__thumb">
-          <SpaThumbnails images={images} />
+          <Link
+            className="short-spa-info__title"
+            to={utils.getSpaLink(spaItem)}
+          >
+            <SpaThumbnails images={images} />
+          </Link>
         </div>
 
         <div className="spa-item__box spa-item__box__info " >
