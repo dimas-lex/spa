@@ -11,6 +11,7 @@
   &__img {
     width: 100%;
   }
+
   &__left-btn,
   &__right-btn {
     position: absolute;
@@ -31,3 +32,12 @@
     right: 0;
   }
 }
+
+@media all and (min-width: @width-s) {
+  .photo-viewer {
+    &__img {
+      max-width: 50vw;
+    }
+  }
+}
+
