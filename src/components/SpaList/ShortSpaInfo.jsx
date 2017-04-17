@@ -11,8 +11,7 @@ const ShortSpaInfo = (props) => {
   const { spaItem } = props;
   if (!spaItem) return null;
 
-  const caption = String(spaItem.get('caption'))
-    .replace(constants.REMOVE_TAGS_REGEX, '');
+  const caption = utils.removeHtmlTags(spaItem.get('caption'));
 
   return (
     <div className="short-spa-info" >

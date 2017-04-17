@@ -4,9 +4,11 @@ import { ACTIONS } from '../actions/app';
 
 const onLoadedSpaList = (state, data) => {
   const spaList = data && data.list;
-  const newState = state.set('spaList', Immutable.fromJS(spaList));
+  let newState = state.set('spaList', Immutable.fromJS(spaList));
+  newState = newState.set('isLoaded', true);
+  newState = newState.set('isLoading', false);
 
-  return newState.set('isLoading', false);
+  return newState;
 };
 
 export default function reducer(state = {}, action = {}) {

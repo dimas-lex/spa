@@ -4,7 +4,7 @@ export default {
     MAIN: '/',
     LIST: '/list',
     DETAIL: '/detail',
-    AUTHOR: 'https://github.com/dimas-lex',
+    AUTHOR: '/author', //https://github.com/dimas-lex',
   },
   MAX_PREVIEW_THUMBS: 3,
   REMOVE_TAGS_REGEX: /<\/?[^>]+(>|$)/g,

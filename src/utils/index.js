@@ -16,4 +16,19 @@ export default {
       },
     };
   },
+  removeHtmlTags(tex) {
+    return String(tex)
+    .replace(constants.REMOVE_TAGS_REGEX, '');
+  },
+  // getParameterByName(url, name) {
+  //   if (!name) return '';
+
+  //   name = name.replace(/[\[\]]/g, "\\$&");
+  //   const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
+  //   const results = regex.exec(url);
+
+  //   if (!results) return null;
+  //   if (!results[2]) return '';
+  //   return decodeURIComponent(results[2].replace(/\+/g, " "));
+  // },
 };
