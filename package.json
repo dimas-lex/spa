@@ -6,7 +6,8 @@
   "license": "ISC",
   "main": "index.jsx",
   "scripts": {
-    "start": "npm run api & webpack-dashboard -t 'SPA' -- webpack-dev-server --colors --no-info",
+    "start": "npm run api & npm run webpackbuild",
+    "webpackbuild": "webpack-dashboard -t 'SPA' -- webpack-dev-server --colors --no-info",
     "build": "rm -rf ./build && NODE_ENV=\"production\" webpack",
     "eslint-break-on-errors": "eslint ./src -f table --ext .js --ext .jsx",
     "eslint": "eslint ./src -f table --ext .js --ext .jsx || true",
@@ -66,5 +67,9 @@
     "react-router": "^3.0.0",
     "redux": "^3.3.1",
     "redux-thunk": "^2.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dimas-lex/spa.git"
   }
 }
