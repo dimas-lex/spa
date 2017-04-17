@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import Lightbox from 'react-images';
-import DetailAddons from './DetailAddons';
 
+import PhotoViewer from './PhotoViewer';
+import DetailAddons from './DetailAddons';
 import utils from '../../utils';
 import constants from '../../Constants';
 
@@ -21,6 +21,7 @@ class DetailInfo extends Component {
     isLoaded: PropTypes.bool,
     location: PropTypes.object,
   };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -42,8 +43,8 @@ class DetailInfo extends Component {
     }
   }
 
-  componentDidMount = ()=> this.initSpaItemByUrl();
-  componentDidUpdate = ()=> this.initSpaItemByUrl();
+  componentDidMount = () => this.initSpaItemByUrl();
+  componentDidUpdate = () => this.initSpaItemByUrl();
 
   render() {
     const spaItem = this.state.spaItem;
@@ -52,6 +53,7 @@ class DetailInfo extends Component {
       // TODO: add empty component
       return null;
     }
+
     const imgCover = spaItem.get('images')
       .find(image => (image && image.get('is_default')));
 
@@ -60,11 +62,7 @@ class DetailInfo extends Component {
 
         <div className="detail-info__details">
           <div className="detail-info__images">
-            <img
-              alt={`${spaItem.get('name')}-${imgCover.get('description')}`}
-              className="detail-info__img"
-              src={imgCover.get('url')}
-            />
+            <PhotoViewer images={spaItem.get('images')} name={spaItem.get('name')} />
           </div>
 
           <div className="detail-info__description">

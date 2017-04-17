@@ -4,31 +4,31 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import utils from '../../utils';
 
 const getAddonView = (addon, index) => {
-  console.log(addon)
+  const title = addon.get('title');
   return (
-      <div key={`addon-${index}`} className="detail-addons__addon">
-        <header className="detail-addons__addon__title">
-          {addon.get('title')}
-        </header>
-        <div className="detail-addons__addon__price">
-          { utils.formatMoney(addon.get('price')) }
-        </div>
-        <div className="detail-addons__addon__images">
-          <img
-            alt={addon.get('title')}
-            className="detail-addons__addon__image"
-            src={addon.get('img')}
-          />
-        </div>
-        <div className="detail-addons__addon__description">
-          {utils.removeHtmlTags(addon.get('description'))}
-        </div>
-        <div className="detail-addons__addon__caption">
-          {utils.removeHtmlTags(addon.get('caption'))}
-        </div>
+    <div key={`addon-${index}`} className="detail-addons__addon">
+      <header className="detail-addons__addon__title">
+        {title}
+      </header>
+      <div className="detail-addons__addon__price">
+        { utils.formatMoney(addon.get('price')) }
       </div>
+      <div className="detail-addons__addon__images">
+        <img
+          alt={title}
+          className="detail-addons__addon__image"
+          src={addon.get('img')}
+        />
+      </div>
+      <div className="detail-addons__addon__description">
+        {utils.removeHtmlTags(addon.get('description'))}
+      </div>
+      <div className="detail-addons__addon__caption">
+        {utils.removeHtmlTags(addon.get('caption'))}
+      </div>
+    </div>
   );
-}
+};
 
 const DetailAddons = (props) => {
   const { addons } = props;

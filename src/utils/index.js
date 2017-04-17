@@ -1,5 +1,5 @@
-import constants from '../Constants';
 import * as currencyFormatter from 'currency-formatter';
+import constants from '../Constants';
 
 export default {
   getSpaLink(spa) {
@@ -19,21 +19,10 @@ export default {
   },
   removeHtmlTags(tex) {
     return String(tex)
-    .replace(constants.REMOVE_TAGS_REGEX, '');
+      .replace(constants.REMOVE_TAGS_REGEX, '');
   },
+
   formatMoney(value) {
     return currencyFormatter.format(value, constants.DEFAULT_CURRENCY);
   },
-
-  // getParameterByName(url, name) {
-  //   if (!name) return '';
-
-  //   name = name.replace(/[\[\]]/g, "\\$&");
-  //   const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
-  //   const results = regex.exec(url);
-
-  //   if (!results) return null;
-  //   if (!results[2]) return '';
-  //   return decodeURIComponent(results[2].replace(/\+/g, " "));
-  // },
 };

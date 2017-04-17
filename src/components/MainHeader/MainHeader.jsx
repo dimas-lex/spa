@@ -25,16 +25,9 @@ const MainHeader = () => (
         <Link
           activeClassName="header__nav__item--active"
           className="header__nav__item"
-          to={constants.URL.DETAIL}
-        >
-          Something
-        </Link>
-        <Link
-          activeClassName="header__nav__item--active"
-          className="header__nav__item"
           to={constants.URL.AUTHOR}
         >
-          About
+          AUTHOR
         </Link>
       </nav>
     </div>

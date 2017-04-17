@@ -22,7 +22,6 @@ export default function reducer(state = {}, action = {}) {
 
     // TODO Add errors on loading
     case ACTIONS.ERROR_LOADING_SPA_LIST:
-      console.log('ERROR_LOADING_SPA_LIST', action);
       return state.set('isLoading', false);
 
     default:

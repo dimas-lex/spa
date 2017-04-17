@@ -1,0 +1,33 @@
+.photo-viewer {
+  cursor: normal;
+  position: relative;
+  background-color: @secondary-background-color;
+  &:hover &__left-btn,
+  &:hover &__right-btn {
+    opacity: 0.5;
+    cursor: pointer;
+  }
+
+  &__img {
+    width: 100%;
+  }
+  &__left-btn,
+  &__right-btn {
+    position: absolute;
+    background-color: @shadow-color;
+    opacity: 0.2;
+    top: 0;
+    bottom: 0;
+    width: 5vw;
+    font-weight: bold;
+    font-size: 2rem;
+    color: @main-color;
+  }
+
+  &__left-btn {
+    left: 0;
+  }
+  &__right-btn {
+    right: 0;
+  }
+}
