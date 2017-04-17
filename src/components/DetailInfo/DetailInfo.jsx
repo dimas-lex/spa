@@ -3,6 +3,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // import Lightbox from 'react-images';
+import DetailAddons from './DetailAddons';
 
 import utils from '../../utils';
 import constants from '../../Constants';
@@ -51,30 +52,39 @@ class DetailInfo extends Component {
       // TODO: add empty component
       return null;
     }
-
-    const id = '1';
+    const imgCover = spaItem.get('images')
+      .find(image => (image && image.get('is_default')));
 
     return (
       <div className="detail-info">
-        <header className="detail-info__title">
-          <h1>
-            {spaItem.get('name') }
-          </h1>
-        </header>
 
         <div className="detail-info__details">
           <div className="detail-info__images">
             <img
+              alt={`${spaItem.get('name')}-${imgCover.get('description')}`}
               className="detail-info__img"
-              src="http://beta-assets.simplifiedinventory.com/photos/e4a6222cdb5b34375400904f03d8e6a5/swedish-massage-massage-massage-19-2.jpg"
+              src={imgCover.get('url')}
             />
           </div>
 
           <div className="detail-info__description">
+            <div className="detail-info__header">
+              <header className="detail-info__header__title">
+                <h1>
+                  {spaItem.get('name')}
+                </h1>
+              </header>
+              <span className="detail-info__header__price">
+                { utils.formatMoney(spaItem.get('price_default')) }
+              </span>
+            </div>
             <p>
               {utils.removeHtmlTags(spaItem.get('description'))}
             </p>
           </div>
+        </div>
+        <div>
+          <DetailAddons addons={spaItem.get('addons')} />
         </div>
 
       </div>
@@ -83,3 +93,4 @@ class DetailInfo extends Component {
 };
 
 export default DetailInfo;
+

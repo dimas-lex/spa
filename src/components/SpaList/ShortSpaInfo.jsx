@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import * as currencyFormatter from 'currency-formatter';
 
 import AddonList from './AddonList';
-import constants from '../../Constants';
 import utils from '../../utils';
 
 const ShortSpaInfo = (props) => {
@@ -29,10 +27,7 @@ const ShortSpaInfo = (props) => {
       </div>
       <Link to={utils.getSpaLink(spaItem)}>
         <div className="short-spa-info__price">
-          {
-            currencyFormatter.format(
-              spaItem.get('price_default'), constants.DEFAULT_CURRENCY)
-          }
+          { utils.formatMoney(spaItem.get('price_default')) }
         </div>
       </Link>
     </div>

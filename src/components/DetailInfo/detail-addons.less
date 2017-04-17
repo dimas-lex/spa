@@ -1,0 +1,84 @@
+.detail-addons {
+  width: 100%;
+  margin: 0;
+  padding: 0px 5vw;
+  display: flex;
+  flex-flow: row wrap;
+
+  justify-content: flex-start;
+  background-color: @main-background-color;
+
+  &__addon {
+    position: relative;
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin: 0;
+    max-width: 270px;
+    min-width: 150px;
+    height: 360px;
+    padding: 5px;
+
+    &:hover {
+      background-color: @shadow-color;
+      cursor: pointer;
+    }
+
+    &:hover &__caption {
+      display: none;
+    }
+    &:hover &__description {
+      visibility: visible;
+      opacity: 0.9;
+    }
+    &__title {
+      color: @main-color;
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: bold;
+      height: 30px;
+      margin-bottom: 3px;
+    }
+
+    &__price {
+      position: absolute;
+      top: 45px;
+      right: 5px;
+      padding: 7px;
+      color: @main-color;
+      text-align: right;
+      font-size: 1.8rem;
+      font-weight: bold;
+      background-color: @shadow-color;
+      height: 30px;
+    }
+
+    &__image {
+      width: 100%;
+    }
+
+    &__description {
+      position: absolute;
+      bottom: 20px;
+      padding: 7px;
+      background-color: @shadow-color;
+      color: @text-color-highlighted;
+      text-indent: 1rem;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s, opacity 0.5s linear;
+    }
+
+    &__caption {
+      color: @text-color;
+      text-indent: 1rem;
+      padding: 7px;
+      transition: @show-hide-animation;
+    }
+  }
+}
+@media all and (max-width: @width-m) {
+  .detail-addons {
+    padding: 0px 5vw;
+    justify-content: space-between;
+  }
+}

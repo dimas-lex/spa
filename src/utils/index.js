@@ -1,4 +1,5 @@
 import constants from '../Constants';
+import * as currencyFormatter from 'currency-formatter';
 
 export default {
   getSpaLink(spa) {
@@ -20,6 +21,10 @@ export default {
     return String(tex)
     .replace(constants.REMOVE_TAGS_REGEX, '');
   },
+  formatMoney(value) {
+    return currencyFormatter.format(value, constants.DEFAULT_CURRENCY);
+  },
+
   // getParameterByName(url, name) {
   //   if (!name) return '';
 
