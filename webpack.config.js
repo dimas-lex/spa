@@ -37,7 +37,7 @@ const plugins = [
         autoprefixer({
           browsers: [
             'last 3 version',
-            'ie >= 10',
+            'ie >= 9',
           ],
         }),
       ],
@@ -91,6 +91,8 @@ if (isProduction) {
     }, {
       loader: "css-loader"
     }, {
+      loader: "postcss-loader"
+    }, {
       loader: "less-loader"
     }],
   });
@@ -110,6 +112,8 @@ if (isProduction) {
       loader: "style-loader"
     }, {
       loader: "css-loader"
+    }, {
+      loader: "postcss-loader"
     }, {
       loader: "less-loader"
     }],
