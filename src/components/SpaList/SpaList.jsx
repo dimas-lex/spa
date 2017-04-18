@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
-import { initApp } from '../../actions/app';
-import constants from '../../Constants';
 
 import ListItem from './ListItem';
 
@@ -19,16 +15,15 @@ class SpaList extends Component {
     spaList: ImmutablePropTypes.list,
   }
 
-  getEmptyList () {
-    return (
-      <div>
-        <h2>
-          Sorry, there are no any available SPA Treatments now. <br/>
-          Please try later...
-        </h2>
-      </div>
-    );
-  }
+  getEmptyList = () => (
+    <div>
+      <h2>
+        Sorry, there are no any available SPA Treatments now. <br />
+        Please try later...
+      </h2>
+    </div>
+  );
+
 
   renderList(spaList) {
     if (!spaList || !spaList.size) {
@@ -55,7 +50,7 @@ class SpaList extends Component {
         </div>
       </main>
     );
-  };
-};
+  }
+}
 
 export default SpaList;

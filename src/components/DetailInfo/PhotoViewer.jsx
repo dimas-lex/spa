@@ -7,26 +7,16 @@ class PhotoViewer extends Component {
   static propTypes = {
     images: ImmutablePropTypes.list,
     name: PropTypes.string,
-  }
+  };
 
   constructor(props) {
     super(props);
     this.state = {
       currentIndex: -1,
-    }
+    };
   }
 
-  initViewer() {
-    const { images, name } = this.props;
-    if (images === this.state.images) return;
-
-    const imgCoverIndex = images.findIndex(image => (image && image.get('is_default')));
-
-    this.setState({
-      images,
-      currentIndex: imgCoverIndex,
-    });
-  }
+  componentDidMount = () => this.initViewer();
 
   onClickButton(delta) {
     const { currentIndex } = this.state;
@@ -45,8 +35,17 @@ class PhotoViewer extends Component {
     });
   }
 
-  componentDidMount = () => this.initViewer();
-  // componentDidUpdate = () => this.initViewer();
+  initViewer() {
+    const { images } = this.props;
+    if (images === this.state.images) return;
+
+    const imgCoverIndex = images.findIndex(image => (image && image.get('is_default')));
+
+    this.setState({
+      images,
+      currentIndex: imgCoverIndex,
+    });
+  }
 
   render() {
     const { images, name } = this.props;
@@ -68,9 +67,11 @@ class PhotoViewer extends Component {
           onClick={() => this.onClickButton(-1)}
         >
           <img
+            alt="Previous"
             width="24"
             height="24"
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4QQRFAElRdkaFwAAAKJJREFUSMft1DEKwkAQRuEvCagIC4KCWNl7AsFG9ASC57DwQJ7RWgRtElhEjDErguSvd9/bmVmGLn+frOWdW93hoiG8QA/9Ep5UUGCIMQKuuNRJ8obwCWZY4/xOi/OG8ClWOKX6BHkJn2OJY9T72wczfPr6ERY4xPAQQhJBVcHmEZ5KUFURsP9GBS8lKQWxZBcJ8tSrpcAA21KQ/XwXdenSPnev8COWs9y9tAAAAABJRU5ErkJggg=="/>
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4QQRFAElRdkaFwAAAKJJREFUSMft1DEKwkAQRuEvCagIC4KCWNl7AsFG9ASC57DwQJ7RWgRtElhEjDErguSvd9/bmVmGLn+frOWdW93hoiG8QA/9Ep5UUGCIMQKuuNRJ8obwCWZY4/xOi/OG8ClWOKX6BHkJn2OJY9T72wczfPr6ERY4xPAQQhJBVcHmEZ5KUFURsP9GBS8lKQWxZBcJ8tSrpcAA21KQ/XwXdenSPnev8COWs9y9tAAAAABJRU5ErkJggg=="
+          />
         </button>
         <img
           alt={`${name}-${image.get('description')}`}
@@ -82,9 +83,11 @@ class PhotoViewer extends Component {
           onClick={() => this.onClickButton(1)}
         >
           <img
+            alt="Next"
             width="24"
             height="24"
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4QQRFAEG575rZQAAALRJREFUSMft1E1qwzAYhOHHdnAhoE0v0Gtk7RsUeoJcIOBL5gS5Q0tDCBgCoT/KRgsvCpUTpZt6dgIxr4ZvPjFr1q2qrrgXpwDqTPNvdHhAUzplnV4d8YxQGtKMABEvpSFNCCHeE9KEEOIPkA7L3+ZY51KGYRgfN3hFO6GJ2TPoscJTToLFRFiPLd5wwDlVuAhgjR3esccJXyU2uU6NecQnjrnmuYAqJW2T6Ueu+Z/8RbP+gS7KmyxZi4aVeAAAAABJRU5ErkJggg==" />
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4QQRFAEG575rZQAAALRJREFUSMft1E1qwzAYhOHHdnAhoE0v0Gtk7RsUeoJcIOBL5gS5Q0tDCBgCoT/KRgsvCpUTpZt6dgIxr4ZvPjFr1q2qrrgXpwDqTPNvdHhAUzplnV4d8YxQGtKMABEvpSFNCCHeE9KEEOIPkA7L3+ZY51KGYRgfN3hFO6GJ2TPoscJTToLFRFiPLd5wwDlVuAhgjR3esccJXyU2uU6NecQnjrnmuYAqJW2T6Ueu+Z/8RbP+gS7KmyxZi4aVeAAAAABJRU5ErkJggg=="
+          />
 
         </button>
       </div>

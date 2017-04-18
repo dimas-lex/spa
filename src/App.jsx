@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 
 import { initApp } from './actions/app';
 
-import constants from './Constants';
 import MainHeader from './components/MainHeader/MainHeader';
 import Loader from './components/Loader/Loader';
 
@@ -14,15 +13,18 @@ import Loader from './components/Loader/Loader';
     isLoading: state.app.get('isLoading'),
   }),
   dispatch => bindActionCreators({
-    initApp
+    initApp,
   }, dispatch)
 )
 
 class App extends Component {
   static propTypes = {
     isLoading: PropTypes.bool,
-    children: PropTypes.object,
-    initApp: PropTypes.func
+    children: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.node),
+      PropTypes.node,
+    ]),
+    initApp: PropTypes.func,
   }
 
   constructor(props) {
@@ -36,11 +38,11 @@ class App extends Component {
 
     return (
       <div className="container">
-          <MainHeader />
-          <Loader isActive={isLoading} />
-          <div className="content">
-            { children }
-          </div>
+        <MainHeader />
+        <Loader isActive={isLoading} />
+        <div className="content">
+          { children }
+        </div>
       </div>
     );
   }

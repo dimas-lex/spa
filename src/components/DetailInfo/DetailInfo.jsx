@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import PhotoViewer from './PhotoViewer';
 import DetailAddons from './DetailAddons';
 import utils from '../../utils';
-import constants from '../../Constants';
 
 @connect(
   state => ({
@@ -19,7 +18,11 @@ class DetailInfo extends Component {
   static propTypes = {
     spaList: ImmutablePropTypes.list,
     isLoaded: PropTypes.bool,
-    location: PropTypes.object,
+    location: PropTypes.shape({
+      query: PropTypes.shape({
+        id: PropTypes.string,
+      }),
+    }),
   };
 
   constructor(props) {
@@ -29,22 +32,21 @@ class DetailInfo extends Component {
       spaItem: {},
     };
   }
+  componentDidMount = () => this.initSpaItemByUrl();
+  componentDidUpdate = () => this.initSpaItemByUrl();
 
   initSpaItemByUrl() {
     const { location, spaList, isLoaded } = this.props;
     const query = location && location.query;
     const id = query && query.id;
 
-    if (isLoaded && id >= 0 && id !== this.state.id ) {
+    if (isLoaded && id >= 0 && id !== this.state.id) {
       this.setState({
         id,
-        spaItem: this.props.spaList.get(id),
+        spaItem: spaList.get(id),
       });
     }
   }
-
-  componentDidMount = () => this.initSpaItemByUrl();
-  componentDidUpdate = () => this.initSpaItemByUrl();
 
   render() {
     const spaItem = this.state.spaItem;
@@ -53,9 +55,6 @@ class DetailInfo extends Component {
       // TODO: add empty component
       return null;
     }
-
-    const imgCover = spaItem.get('images')
-      .find(image => (image && image.get('is_default')));
 
     return (
       <div className="detail-info">
@@ -88,7 +87,7 @@ class DetailInfo extends Component {
       </div>
     );
   }
-};
+}
 
 export default DetailInfo;
 
