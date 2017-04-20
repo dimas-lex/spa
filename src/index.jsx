@@ -11,7 +11,7 @@ import App from './App';
 import SpaList from './components/SpaList/SpaList';
 import About from './components/About/About';
 import DetailInfo from './components/DetailInfo/DetailInfo';
-
+import NotFound from './components/NotFound/NotFound';
 import './index.less';
 
 ReactDOM.render(
@@ -25,6 +25,7 @@ ReactDOM.render(
         <Route path={constants.URL.LIST} component={SpaList} />
         <Route path={constants.URL.DETAIL} component={DetailInfo} />
         <Route path={constants.URL.AUTHOR} component={About} />
+        <Route path="*" component={NotFound} />
       </Route>
 
     </Router>
